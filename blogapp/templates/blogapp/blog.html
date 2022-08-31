@@ -1,0 +1,12 @@
+{% extends 'portfolioapp/base.html' %}
+{% block content %}
+    <h1>Blog page</h1>
+    <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
+         data-bs-smooth-scroll="true" class="scrollspy-example bg-light p-3 rounded-2" tabindex="0">
+        {% for blog in blogs %}
+            <h4 id="scrollspyHeading1" class="fs-2">{{ blog.title }}</h4>
+            <p class="text-lowercase">{{ blog.created_at }}</p>
+            <p class="fs-4 fw-normal lh-1">{{ blog.description }}</p>
+        {% endfor %}
+    </div>
+{% endblock %}

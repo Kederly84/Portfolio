@@ -1,0 +1,16 @@
+{% extends 'portfolioapp/base.html' %}
+
+{% block content %}
+    <div class="row text-center">
+        <h1 class="display-4">
+            {{ object.title }}
+        </h1>
+        <div>
+            <img src="{{ object.image.url }}" alt="..." style="max-width: 600px;">
+        </div>
+        <p class="lead">
+            {{ object.description }}
+        </p>
+    </div>
+
+{% endblock %}

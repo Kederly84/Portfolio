@@ -1,17 +1,48 @@
 {% extends 'portfolioapp/base.html' %}
 
 {% block content %}
-<h1>Привет! Это заглушка!</h1>
-<div class="row justify-content-center">
-    {% for project in projects %}
-        <div class="card text-center col-sm-12 col-md-6 col-lg-4 border-1 mx-1 py-2" style="width: 30rem;">
-            <img src="{{ project.image.url }}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{ project.title }}</h5>
-                <p class="card-text">{{ project.description }}</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class=""
+                    aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"
+                    class=""></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"
+                    class="active" aria-current="true"></button>
         </div>
-    {% endfor %}
-</div>
+        <div class="carousel-inner" style="height: 20vh; width: auto">
+            {% for project in projects %}
+                <div class="carousel-item active">
+                    <img src="{{ project.image.url }}" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{{ project.title }}</h5>
+                        <p>{{ project.description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="card-group">
+        {% for project in projects %}
+            <div class="card text-center col-sm-12 col-md-6 col-lg-4 border-1 mx-1 py-2" style="width: 30rem;">
+                <img src="{{ project.image.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ project.title }}</h5>
+                    <p class="card-text">{{ project.description }}</p>
+                    <a href="{% url 'home:project_detail' pk=project.pk %}" class="btn btn-primary">Подробнее</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

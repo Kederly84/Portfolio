@@ -3,7 +3,6 @@ from blogapp.models import Blog
 from django.utils.html import format_html
 
 
-
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
     list_display = ('pk', 'title', 'slug', 'created_at')
